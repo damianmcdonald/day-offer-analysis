@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Actuator Metrics - HEALTH</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-wrapper" style="background-color:#36BEFE;">
+        <div class="col s12 m12 l12">
+            <a href="index.html" class="breadcrumb">&nbsp;&nbsp;Index</a>
+            <a href="actuator-metrics-env.html" class="breadcrumb">&nbsp;&nbsp;Actuator Metrics Env</a>
+        </div>
+    </div>
+</nav>
+
+<div class="section">
+    <h5>&nbsp;&nbsp;Actuator Metrics - HEALTH</h5>
+</div>
+<div class="divider"></div>
+
+<div class="container">
+    <!-- Page Content goes here -->
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <div id="results-div" style="display: none; font-size: 12px;">
+                <pre>
+                  <code id="results-code" class="language-javascript"></code>
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Compiled and minified JavaScript -->
+<script src="assets/js/vendor/materialize.min.js"></script>
+<script src="assets/js/vendor/jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="assets/js/vendor/prism.min.js"></script>
+<script>
+    $.get( "/health", function( data ) {
+        const displayResults = "\n"+JSON.stringify(data, undefined, 4);
+        document.getElementById('results-code').innerHTML = displayResults;
+        // highlight the code block
+        Prism.highlightElement(document.getElementById('results-code'));
+        // show the results block
+        $("#results-div").show();
+    })
+    .fail(function() {
+        alert( "Unauthorized user - please logon with appropriate credentials to see the actuator metrics." );
+        window.location.href = "/logon.html";
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <style>
+        #overlay {
+            position: fixed; /* Sit on top of the page content */
+            display: none; /* Hidden by default */
+            width: 100%; /* Full width (cover the whole page) */
+            height: 100%; /* Full height (cover the whole page) */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+            z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+            cursor: pointer; /* Add a pointer on hover */
+        }
+        #page-loader {
+            width: 256px;
+            height: 256px;
+
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            margin: auto;
+        }
+    </style>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+    <div id="overlay">
+        <div id="page-loader">
+            <img src="assets/images/page-loader.gif"/>
+        </div>
+    </div>
+
+    <nav>
+        <div class="nav-wrapper" style="background-color:#36BEFE;">
+            <div class="col s12 m12 l12">
+                <a href="index.html" class="breadcrumb">&nbsp;&nbsp;Index</a>
+                <a href="datacharts.html" class="breadcrumb">DataCharts</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Page Content goes here -->
+
+        <div class="section">
+            <h5>Ofertas (Estadisticas)</h5>
+        </div>
+        <div class="divider"></div>
+
+        <div class="row">
+          <!-- Chart Card Total Offers -->
+          <div class="col s12 m12 l6">
+            <div class="card" style="height: 350px;">
+              <div class="card-image">
+                <img src="assets/images/statistics-banner.jpg">
+                <h5 style="text-align:center;">Ofertas totales</h5>
+              </div>
+              <div id="chart-card-total-offers" class="card-content" style="padding-top:0px;margin-top:0px;margin:auto; width:50%;">
+                <span id="total-offers-value" style="margin:0px; padding:0px; font-size: 175px; font-weight:bold; color:green;">.....</span>
+              </div>
+            </div>
+          </div>
+          <!-- Chart Gauge Monthly Offers -->
+          <div class="col s12 m12 l6">
+              <div id="chart_gauge_monthly_offers" style="height: 400px; margin:auto; width:50%;"></div>
+          </div>
+        </div>
+
+        <div class="row">
+            <!-- Chart Table Recent Projects -->
+            <div class="col s12 m12 l8">
+                <div id="chart_table_recent_projects" style="height: 500px;"></div>
+            </div>
+            <!-- Chart Column Offers Timeline -->
+            <div class="col s12 m12 l4">
+                <div id="chart_column_offers_timeline" style="height: 500px;"></div>
+            </div>
+        </div>
+
+        <!-- Chart Bar Phase Averages -->
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div id="chart_bar_phase_averages" style="height: 500px;"></div>
+            </div>
+        </div>
+
+        <!-- Chart Line Offers Timeline -->
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div id="chart_line_offers_timeline" style="height: 500px;"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h5>Ofertas (Distribuciones y agrupaciones)</h5>
+        </div>
+        <div class="divider"></div>
+
+        <div class="row">
+            <!-- Chart Column Phase Comparison -->
+            <div class="col s12 m12 l6">
+                <div id="chart-column-phase-status" style="height: 500px;"></div>
+            </div>
+            <!-- Chart Pie Cloud Provider -->
+            <div class="col s12 m12 l6">
+                <div id="chart_pie_cloud_providers" style="height: 500px;"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Chart Table Client Locations -->
+            <div class="col s12 m12 l6">
+                <h5>Ubicación de clientes</h5>
+                <div id="chart_table_client_locations"></div>
+            </div>
+            <!-- Chart Pie Greenfield -->
+            <div class="col s12 m12 l6">
+                <div id="chart_pie_greenfield"  style="height: 500px;"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Chart Donut Deployment Distribution -->
+            <div class="col s12 m12 l6">
+                <div id="chart-donut-deployment-distribution" style="height: 500px;"></div>
+            </div>
+            <!-- Chart Bubble Wordtree Deployment Distribution -->
+            <div class="col s12 m12 l6">
+                <div id="chart_wordtree_deployment_distribution" style="height: 500px;"></div>
+            </div>
+        </div>
+
+        <!-- Chart Table Top Largest and Smallest Projects -->
+        <div class="row">
+            <div class="col s12 m12 l6">
+                <h5>Top 10 proyectos más grandes</h5>
+                <div id="chart-table-top-largest-projects"></div>
+            </div>
+            <div class="col s12 m12 l6">
+                <h5>Top 10 proyectos más pequeños</h5>
+                <div id="chart-table-top-smallest-projects"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Chart Donut Additional Services -->
+            <div class="col s12 m12 l6">
+                <div id="chart-pie-additional-services" style="height: 500px;"></div>
+            </div>
+            <!-- Chart Pie Conectivity -->
+            <div class="col s12 m12 l6">
+                <div id="chart_donut_connectivity" style="height: 500px;"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h5>Calculadora (Estadisticas y comparaciones)</h5>
+        </div>
+        <div class="divider"></div>
+
+        <!-- Chart Area Phase Deviation -->
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div id="chart_area_phase_deviation" style="height: 500px;"></div>
+            </div>
+        </div>
+
+        <!-- Chart Column Phase Comparison -->
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div id="chart-column-phase-comparison" style="height: 500px;"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="assets/js/vendor/materialize.min.js"></script>
+    <script type="text/javascript" src="assets/js/vendor/loader.js"></script>
+    <script src="assets/js/vendor/jquery-3.5.0.min.js"></script>
+    <!-- <script src="assets/js/vendor/jquery-3.5.0.min.map"></script> -->
+    <script src="assets/js/vendor/papaparse.min.js"></script>
+    <script src="assets/js/parser-csv.js"></script>
+    <script src="assets/js/init.js"></script>
+
+    <script src="assets/js/chart-card-total-offers.js"></script>
+    <script src="assets/js/chart-gauge-monthly-offers.js"></script>
+    <script src="assets/js/chart-line-offers-timeline.js"></script>
+    <script src="assets/js/chart-table-recent-projects.js"></script>
+    <script src="assets/js/chart-column-offers-timeline.js"></script>
+    <script src="assets/js/chart-pie-greenfield.js"></script>
+    <script src="assets/js/chart-pie-cloud-providers.js"></script>
+    <script src="assets/js/chart-area-phase-deviation.js"></script>
+    <script src="assets/js/chart-bar-phase-averages.js"></script>
+    <script src="assets/js/chart-donut-connectivity.js"></script>
+    <script src="assets/js/chart-table-client-locations.js"></script>
+    <script src="assets/js/chart-column-phase-comparison.js"></script>
+    <script src="assets/js/chart-pie-additional-services.js"></script>
+    <script src="assets/js/chart-table-top-largest-projects.js"></script>
+    <script src="assets/js/chart-table-top-smallest-projects.js"></script>
+    <script src="assets/js/chart-donut-deployment-distribution.js"></script>
+    <script src="assets/js/chart-column-phase-status.js"></script>
+    <script src="assets/js/chart-wordtree-deployment-distribution.js"></script>
+
+    <script>
+        document.getElementById("overlay").style.display = "block";
+        setTimeout(function(){
+            document.getElementById("overlay").style.display = "none";
+        }, 2500);
+    </script>
+</body>
+
+</html>

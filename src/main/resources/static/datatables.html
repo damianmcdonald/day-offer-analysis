@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <style>
+    #overlay {
+        position: fixed; /* Sit on top of the page content */
+        display: none; /* Hidden by default */
+        width: 100%; /* Full width (cover the whole page) */
+        height: 100%; /* Full height (cover the whole page) */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+        z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+        cursor: pointer; /* Add a pointer on hover */
+    }
+    #page-loader {
+        width: 256px;
+        height: 256px;
+
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        margin: auto;
+    }
+    </style>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+    <div id="overlay">
+        <div id="page-loader">
+            <img src="assets/images/page-loader.gif"/>
+        </div>
+    </div>
+
+    <div>
+        <!-- Page Content goes here -->
+        <nav>
+            <div class="nav-wrapper" style="background-color:#36BEFE;">
+                <div class="col s12 m12 l12">
+                    <a href="index.html" class="breadcrumb">&nbsp;&nbsp;Index</a>
+                    <a href="datatables.html" class="breadcrumb">DataTable</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="section">
+            <h5>Data Table de ofertas</h5>
+        </div>
+        <div class="divider"></div>
+
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div id="chart_main_table_div"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="assets/js/vendor/materialize.min.js"></script>
+    <script type="text/javascript" src="assets/js/vendor/loader.js"></script>
+    <script src="assets/js/vendor/jquery-3.5.0.min.js"></script>
+    <!-- <script src="assets/js/vendor/jquery-3.5.0.min.map"></script> -->
+    <script src="assets/js/vendor/papaparse.min.js"></script>
+    <script src="assets/js/parser-csv.js"></script>
+    <script src="assets/js/init.js"></script>
+    <script src="assets/js/chart-table-main.js"></script>
+
+    <script>
+        document.getElementById("overlay").style.display = "block";
+        setTimeout(function(){
+            document.getElementById("overlay").style.display = "none";
+        }, 2500);
+    </script>
+</body>
+
+</html>

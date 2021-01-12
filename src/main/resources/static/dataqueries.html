@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div>
+        <!-- Page Content goes here -->
+        <nav>
+            <div class="nav-wrapper" style="background-color:#36BEFE;">
+                <div class="col s12 m12 l12">
+                    <a href="index.html" class="breadcrumb">&nbsp;&nbsp;Index</a>
+                    <a href="dataqueries.html" class="breadcrumb">DataQueries</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+
+          <div class="row">
+            <form class="col s12 m12 l12">
+              <div class="row">
+                <div class="input-field col s12 m12 l12">
+                  <textarea id="textarea-query" class="materialize-textarea"></textarea>
+                  <label for="textarea-query">example: SELECT client,cloud,total,status,statusDate FROM ? WHERE statusDate->getFullYear() > 2019 AND status != "Completado"</label>
+                </div>
+                  <a id="execute-query" class="waves-effect waves-light btn"><i class="material-icons right">send</i>Execute</a>
+                  &nbsp;&nbsp;
+                  <a id="clear-query" class="waves-effect waves-light btn"><i class="material-icons right">clear</i>Clear</a>
+              </div>
+            </form>
+          </div>
+
+          <div class="row">
+            <div class="col s12 m12 l12">
+              <div id="results-div" style="display: none; font-size: 12px;">
+                <pre>
+                  <code id="results-code" class="language-javascript"></code>
+                </pre>
+            </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12 m12 l12">
+              <a id="data-schema-show-hide" style="cursor: pointer">Show/Hide Data Schema</a>
+            </div>
+            <div class="col s12 m12 l12">
+              <div id="data-schema" style="display: block;">
+              <pre>
+                <code class="language-javascript">
+{
+  "client": "Globalia Web",                         // client name
+  "status": "Oferta recibido",                      // Oferta recibido / Aceptado / Completado / En marcha
+  "statusDate": "2019-12-18T00:00:00.000Z",         // complete date
+  "statusDateYYYY": "1970-01-01T00:00:02.019Z",     // date as year
+  "statusDateYYYYMM": "2019-12-01T00:00:00.000Z",   // date as year and month
+  "statusDateTimestamp": 1576627200000,             // date as timestamp
+  "cloud": "AWS",                                   // AWS / Azure / GCP
+  "greenfield": false,                              // is greenfield?
+  "regions": 1,                                     // # of regions
+  "accounts": 1,                                    // # of accounts
+  "applications": 0,                                // # of applications
+  "vpcs": 2,                                        // # of vpcs
+  "subnets": 2,                                     // # of subnets
+  "hasConnectivity": true,                          // has ON-Prem connecitivty?; VPN or Dedicated Connection
+  "hasPeerings": true,                              // has a VPC peering?
+  "hasDirectoryService": false,                     // has Active Directory or LDAP?
+  "hasAdvancedSecurity": false,                     // has advanced security group / NACL configuration?
+  "hasAdvancedLogging": false,                      // has advanced logging configuration?
+  "hasAdvancedMonitoring": true,                    // has advanced monitoring configuration?
+  "hasAdvancedBackup": false,                       // has advanced backup configuration?
+  "virtualMachines": 5,                             // # of virtual machines
+  "buckets": 2,                                     // # of object storage instances
+  "databases": 0,                                   // # of PaaS databases
+  "hasElb": false,                                  // has a Load Balancer?
+  "hasAutoScripts": true,                           // has IaC automation scripts?
+  "hasOtherServices": true,                         // has other services which don't fit in the day calculator?
+  "service1": "VPC",                                // additional service 1 name
+  "service2": "CloudWatch",                         // additional service 2 name
+  "service3": "CloudTrail",                         // additional service 3 name
+  "service4": "Config",                             // additional service 4 name
+  "service5": "SNS",                                // additional service 5 name
+  "phase1EstimatePre": 1.5,                         // phase 1 pre-estimation by day calculator
+  "phase1Estimate": 1.5,                         // phase 1 estimation by  architects
+  "phase1Deviation": 0,                             // phase 1 deviation between day calculator and  architects
+  "phase2EstimatePre": 3,                           // phase 2 pre-estimation by day calculator
+  "phase2Estimate": 2,                           // phase 2 estimation by  architects
+  "phase2Deviation": 1,                             // phase 2 deviation between day calculator and  architects
+  "phase3EstimatePre": 4.5,                         // phase 3 pre-estimation by day calculator
+  "phase3Estimate": 3.25,                        // phase 3 estimation by  architects
+  "phase3Deviation": 1.25,                          // phase 3 deviation between day calculator and  architects
+  "phase4EstimatePre": 1.25,                        // phase 4 pre-estimation by day calculator
+  "phase4Estimate": 1.25,                        // phase 4 estimation by  architects
+  "phase4Deviation": 0,                             // phase 4 deviation between day calculator and  architects
+  "totalPre": 10.25,                                // total pre-estimation by day calculator
+  "total": 8,                                    // total estimation by  architects
+  "totalDeviation": 2.25,                           // total deviation between day calculator and  architects
+  "travel": 2,                                      // # of trips to client premises
+  "administered": false,                            // administered?
+  "geoLocation": "Palma de Mallorca",               // location of client
+  "isValid": true                                   // does this offer fit within the constraints of the daya calculator?
+}</code>
+              </pre>
+            </div>
+            </div>
+          </div>
+
+
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="assets/js/vendor/materialize.min.js"></script>
+    <script type="text/javascript" src="assets/js/vendor/loader.js"></script>
+    <script type="text/javascript" src="assets/js/vendor/prism.min.js"></script>
+    <script src="assets/js/vendor/alasql@0.5.js"></script>
+    <script src="assets/js/vendor/jquery-3.5.0.min.js"></script>
+    <script src="assets/js/vendor/papaparse.min.js"></script>
+    <script src="assets/js/parser-csv.js"></script>
+    <script src="assets/js/init.js"></script>
+    <script src="assets/js/init-query.js"></script>
+
+</body>
+
+</html>
