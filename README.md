@@ -13,8 +13,8 @@ The application is packaged as a Java application ([Spring Boot executable jar](
 This section describes the process to clone the code base and build the project using the Java JDK 8 and Maven tool chain.
 
 ```bash
-git clone https://oauth2:<personal-access-token>@code.fresco.me/mvp-cloud-spain/offer-analysis.git offer-analysis
-cd offer-analysis
+git clone https://github.com/damianmcdonald/day-offer-analysis.git day-offer-analysis
+cd day-offer-analysis
 mvn clean package
 ```
 
@@ -25,7 +25,7 @@ To run the project, do the following:
 1. Modify the settings in the [application.properties](src/main/resources/application.properties) file to suit your needs
 2. Build the binary; `mvn clean package`
 3. Execute the `run-application` startup script for your environment (`.sh` for linux or `.bat` for windows)
-4. The `offer-analysis` application will launch and be available on the `server.port` value that you specified in the `application.properties` file. For example, http://localhost:9923
+4. The `day-offer-analysis` application will launch and be available on the `server.port` value that you specified in the `application.properties` file. For example, http://localhost:9923
 5. You can login as a standard user using the credentials specified in the `user.standard.name` and `user.standard.password` values of the `application.properties` file.
 6. If you wish to logon as an admin user, which will allow you to view the full set of [actuator metrics](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html), you must use the username specified in the `user.admin.name` value of the `application.properties` file. For the password, you will need to scroll through the console/log file output of the application in order to find the administrator password block (as illustrated below).
 
@@ -33,7 +33,7 @@ To run the project, do the following:
 
 # Dataset schema
 
-`offer-analysis` creates charts, dadhboards and queries based on a dataset that is defiined in CSV format.
+`day-offer-analysis` creates charts, dadhboards and queries based on a dataset that is defiined in CSV format.
 
 The structure of the dataset is defined below:
 
